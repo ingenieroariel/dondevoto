@@ -1,0 +1,4 @@
+gunicorn
+BeautifulSoup
+-e git+http://github.com/andymccurdy/redis-py.git#egg=redis
+pycurl
