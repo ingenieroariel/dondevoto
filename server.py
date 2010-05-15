@@ -24,9 +24,7 @@ def donde(cedula):
 def app(environ, start_response):
     """Simplest possible application object"""
     path_info = environ['PATH_INFO']
-    print path_info
     digitos= DIGITS.findall(path_info)
-    print digitos
     data = 'Hello, World!\n'
     status = '200 OK'
     if len(digitos)==1:
@@ -36,6 +34,5 @@ def app(environ, start_response):
         ('Content-type','text/plain'),
         ('Content-Length', str(len(data)))
     ]
-    print environ
     start_response(status, response_headers)
     return iter([data])
