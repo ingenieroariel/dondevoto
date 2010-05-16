@@ -2,10 +2,10 @@ body {
         background: #f2f2f2;
 }
 .content {
-	
 	width:780px;
-        margin: 0 auto;
-	height:72px;
+        margin: 0 auto 2em;
+        height: auto !important;
+        min-height: 100%;
 	z-index:4;
     -moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
@@ -92,6 +92,8 @@ font-size:10px;
 font-family: sans-serif;
 text-align: center;
 text-shadow: 0 -1px 0 rgba(255,255,255, 1);
+position: relative;
+clear: both;
 }
 
 .result a {

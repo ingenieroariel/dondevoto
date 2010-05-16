@@ -16,33 +16,33 @@
     });    
 
     $('form').submit(function() {
-      $(".result").hide();
-      cedula = $("#cedula").val();     
-      url = "api/" + cedula + ".json";
-      $.getJSON(url, function(data) {
-	if (data[cedula] != undefined){
-          //alert(data[cedula]);
-          sitio = data[cedula];
-          $('.direccion').html(""+sitio[3].toLowerCase()+"<br>"+sitio[2].toLowerCase());
-          $('.mesa').html(" Mesa #"+sitio[5]);
-          $('.ciudad').html(""+sitio[1].toLowerCase()+", "+sitio[0].toLowerCase());
-	  $(".result").show();
-        }else{
-          $(".result").hide();
-	}
-      });      
+      $("#result").hide();
+      $("#error").hide();
+      $("#errorMessage").html("");
+      cedula = parseInt($("#cedula").val().replace(/[\D\s]/g, ''));     
+      if (!(isNaN(cedula))){
+	url = "api/" + cedula + ".json";
+        $.getJSON(url, function(data) {
+	  if (data[cedula] != undefined){
+            sitio = data[cedula];
+            $('.direccion').html(""+sitio[3].toLowerCase()+"<br>"+sitio[2].toLowerCase());
+            $('.mesa').html(" Mesa #"+sitio[5]);
+            $('.ciudad').html(""+sitio[1].toLowerCase()+", "+sitio[0].toLowerCase());
+	    $("#result").show();
+          }else{
+            $("#result").hide();
+	    $("#errorMessage").html("No se han encontrado resultados para tu documento de identidad");
+	    $("#error").show();
+	  }
+        });
+      }else{
+        $("#errorMessage").html("El documento de identidad que has ingresado no es valido");
+	$("#error").show();
+      }      
       return false;
     });    
   });
 </script>
-
-<script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=c0d51bb3-dfe2-49d0-98a3-c08aa7928472&amp;type=website&amp;post_services=email%2Cfacebook%2Ctwitter%2Cgbuzz&amp;headerbg=%23000000&amp;linkfg=%23000000&amp;headerTitle=Comparte%20%C3%A9ste%20sitio&amp;button=false"></script>
-<style type="text/css">
-body {font-family:helvetica,sans-serif;font-size:12px;}
-a.stbar.chicklet img {border:0;height:16px;width:16px;margin-right:3px;vertical-align:middle;}
-a.stbar.chicklet {height:16px;line-height:16px;}
-</style>
-
 
 <title>¿En dónde voto? - Servicio gratuito para saber donde votar en Colombia</title>
 <link rel="shortcut icon" href="img/icon.png" />
@@ -63,52 +63,40 @@ a.stbar.chicklet {height:16px;line-height:16px;}
 
 </script>
 <div class="content">
-<img src="img/endondevoto.png" alt="en dónde voto - colombia" class="logo" />
-<div class="search">
-<form action="">
-<input type="text" class="campo" value="Ingresa tu documento de identidad" id="cedula" />
-<input type="submit" class="boton" value="Buscar" name="" />
-</form>
-</div> 
+ <img src="img/endondevoto.png" alt="en dónde voto - colombia" class="logo" />
+ <div class="search">
+  <form action="">
+   <input type="text" class="campo" value="Ingresa tu documento de identidad" id="cedula" />
+   <input type="submit" class="boton" value="Buscar" name="" />
+  </form>
+ </div> 
 
-<!-- resultado -->
-<div class="result" style="display:none">
-<p>tengo que votar en</p>
-<h3 class="direccion">Cra 54 No. 76-119,  Colegio Marinita Cesar</h3>
-<p><span class="mesa"> Mesa #30 </span></p>
-<p class="ciudad">Barranquilla - Atlántico   </p>
-<p style="">
+ <div class="result" id="error" style="display:none; padding:10px">
+  <h3 id="errorMessage"></h3>
+ </div>
 
-<a id="ck_email" class="stbar chicklet" href="javascript:void(0);"><img src="http://w.sharethis.com/chicklets/email.gif" /></a>
-<a id="ck_facebook" class="stbar chicklet" href="javascript:void(0);"><img src="http://w.sharethis.com/chicklets/facebook.gif" /></a>
-<a id="ck_twitter" class="stbar chicklet" href="javascript:void(0);"><img src="http://w.sharethis.com/chicklets/twitter.gif" /></a>
-<a id="ck_sharethis" class="stbar chicklet" href="javascript:void(0);"><img src="http://w.sharethis.com/chicklets/sharethis.gif" />Riega la bola ...</a>
-<script type="text/javascript">
-	var shared_object = SHARETHIS.addEntry({
-	title: document.title,
-	url: document.location.href
-});
-
-shared_object.attachButton(document.getElementById("ck_sharethis"));
-shared_object.attachChicklet("email", document.getElementById("ck_email"));
-shared_object.attachChicklet("facebook", document.getElementById("ck_facebook"));
-shared_object.attachChicklet("twitter", document.getElementById("ck_twitter"));
-</script>
-
+ <!-- resultado -->
+ <div class="result" id="result" style="display:none">
+  <p>tengo que votar en</p>
+  <h3 class="direccion">Cra 54 No. 76-119,  Colegio Marinita Cesar</h3>
+  <p><span class="mesa"> Mesa #30 </span></p>
+  <p class="ciudad">Barranquilla - Atlántico   </p>
+  <p style="">
 <!--
 <img src="img/facebook.png" alt="" />
 <img src="img/twitter.png" alt="" />
 <img src="img/google-buzz.png" alt="" />
 -->
 </p>
-</div>
+  </div>
 <!-- fin resultado -->
 
+</div> 
 <div class="footer">
-<p>Proyecto sin ánimo de lucro, Desarrollado por <a href="http://twitter.com/ingenieroariel" title="Ariel Núñez" target="_blank">@ingenieroariel</a> y <a href="http://twitter.com/andresr83" title="Andrés Rodríguez" target="_blank">@andresr83</a>; diseño web hecho por <a href="http://twitter.com/trixel" title="Juan Guillermo Sánchez" target="_blank">@trixel</a>. Código fuente en <a href="http://github.com/ingenieroariel/dondevoto" target="_blank" title="donde voto en github">github</a></p>
+<p>Proyecto sin ánimo de lucro, Desarrollado por <a href="http://twitter.com/ingenieroariel" title="Ariel Núñez" target="_blank">@ingenieroariel</a> y <a href="http://twitter.com/cachafla" title="Andrés Rodríguez" target="_blank">@cachafla</a>; diseño web hecho por <a href="http://twitter.com/trixel" title="Juan Guillermo Sánchez" target="_blank">@trixel</a>. Código fuente en <a href="http://github.com/ingenieroariel/dondevoto" target="_blank" title="donde voto en github">github</a></p>
+<p>Este proyecto existe porque a veces la página oficial de la registraduría no está disponible el día de las elecciones.</p>
+<p>Éste servicio (y su arquitectura) es nuestro pequeño aporte a la democracia en nuestro país.</p>
 </div> 
-</div> 
-
 
 </body>
 </html>
