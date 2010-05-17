@@ -88,14 +88,50 @@ margin: 0 auto;
 }
 .footer, .footer a {
 color: #777;
-font-size:10px;
+font-size:12px;
 font-family: sans-serif;
 text-align: center;
 text-shadow: 0 -1px 0 rgba(255,255,255, 1);
 position: relative;
 clear: both;
+background-color: white;
+}
+
+.footer {
+width: 600px;
+padding: 20px;
+text-align: left;
+margin-left: auto;
+margin-right: auto;
 }
 
 .result a {
     color: black;
 }
+
+.result {
+ padding-bottom: 20px;
+ padding-right: 10px;
+}
+
+.addthis_toolbox{
+ text-align:center !important;
+ float:right !important;
+}
+
+.addthis_button_compact{
+ font-size: 14px !important;
+
+}
+
+.footer-link{
+ padding-top:20px;
+ color:black;
+ text-align:center;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+.footer-link a:visited{
+ color:black;
+} 

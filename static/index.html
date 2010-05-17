@@ -14,6 +14,12 @@
       if (this.value == "Ingresa tu cédula")
 	this.value = "";
     });    
+    $('.footer').hide();
+    // shows the footer DIV on clicking the link with an ID of "slick-show"
+  $('a#footer-show').click(function() {
+    $('.footer').slideToggle();
+    return false;
+  });
 
     $('form').submit(function() {
       $("#result").hide();
@@ -103,12 +109,13 @@
   </div>
 <!-- fin resultado -->
 
-</div> 
+<div class="footer-link"><p><a href="" id="footer-show">Quien hizo este sitio y por qué?</a></p></div></div> 
 <div class="footer">
-<p>Proyecto sin ánimo de lucro, Desarrollado por <a href="http://twitter.com/ingenieroariel" title="Ariel Núñez" target="_blank">@ingenieroariel</a> y <a href="http://twitter.com/cachafla" title="Andrés Rodríguez" target="_blank">@cachafla</a>; diseño web hecho por <a href="http://twitter.com/trixel" title="Juan Guillermo Sánchez" target="_blank">@trixel</a>. Código fuente en <a href="http://github.com/ingenieroariel/dondevoto" target="_blank" title="donde voto en github">github</a></p>
-<p>Este proyecto existe porque en las últimas elecciones la página oficial de la registraduría estuvo sobrecargada y la gente no podía averiguar donde votar.</p>
-<p>Pusimos nuestras mentes juntas para encontrar una arquitectura 100 veces más eficiente y capaz de soportar el tráfico requerido.</p>
-<p>Señores de la registraduría, estamos a la orden si quieren implementar esta solución en su servidor; el código es gratuito y libre.</p>
+<p>Este proyecto fue creado por <a href="http://twitter.com/ingenieroariel" title="Ariel Núñez" target="_blank">@ingenieroariel(Ariel Núñez)</a> con la ayuda de <a href="http://twitter.com/cachafla" title="Andrés Rodríguez" target="_blank">@cachafla(Andrés Rodríguez)</a> y <a href="http://twitter.com/trixel" title="Juan Guillermo Sánchez" target="_blank">@trixel(Juan Guillermo Sánchez)</a>. La primera vez que buscas tu sitio de votación tomamos la información directamente del sitio de la registraduría y la almacenamos en nuestro servidor, de manera que si el servicio oficial se cae como a veces pasa, puedas acceder a la información sobre tu sitio de votación.</p>
+<p>El código de esta página es abierto / libre, si tienes inclinaciones técnicas mira todo el detalle en  <a href="http://github.com/ingenieroariel/dondevoto" target="_blank" title="donde voto en github">github</a></p>
+<p>Cargamos todo en la RAM de nuestro servidor en la nube de Amazon para ser <a href="http://github.com/ingenieroariel/dondevoto/blob/master/BENCHMARKS.rst" target="_blank">100 veces más eficientes</a> que el script de PHP + Base de Datos de la  registraduría. Te puedes dar cuenta ya que la primera bús queda de tu sitio de votación tarda aproximadamente 4 segundos y las siguientes veces mucho menos de un segundo.</p>
+<p>Señores de la registraduría, estamos a la orden si quieren implementar esta solución en su servidor, a nosotros nos tomó sólo dos días y <a href="http://github.com/ingenieroariel/dondevoto/blob/master/LICENSE" target="_blank">el código es gratuito y libre</a>.</p>
+<p>Términos de uso: No nos eches la culpa si tu computador explota o votas por la persona que no és. Tampoco nos demandes que estamos tratando es de hacer nuestra pequeña contribución a la democracia de nuestro país.</p>
 </div> 
 
 </body>
