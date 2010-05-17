@@ -1,6 +1,5 @@
 Prueba simple con 20 requests al servidor de la registraduría y a nuestro servicio:
 
-.. code-block::bash
 
     ab -n 20 http://www3.registraduria.gov.co/censo/_censoresultado.php?nCedula=70041053
 
@@ -49,7 +48,6 @@ Percentage of the requests served within a certain time (ms)
   99%   5962
  100%   5962 (longest request)
 
-.. code-block::bash
 
     ab -n 20 http://endondevoto.com/api/70041053.json
 
