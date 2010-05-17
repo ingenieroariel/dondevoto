@@ -1,6 +1,9 @@
 Prueba simple con 20 requests al servidor de la registraduría y a nuestro servicio:
 
-`ab -n 20 http://www3.registraduria.gov.co/censo/_censoresultado.php?nCedula=70041053`
+.. code-block::
+    ab -n 20 http://www3.registraduria.gov.co/censo/_censoresultado.php?nCedula=70041053
+
+
 This is ApacheBench, Version 2.3 <$Revision: 655654 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
@@ -45,7 +48,9 @@ Percentage of the requests served within a certain time (ms)
   99%   5962
  100%   5962 (longest request)
 
-`ab -n 20 http://endondevoto.com/api/70041053.json`
+.. code-block::
+    ab -n 20 http://endondevoto.com/api/70041053.json
+
 
 This is ApacheBench, Version 2.3 <$Revision: 655654 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
