@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -
 import urllib2
-import json
 from BeautifulSoup import BeautifulSoup
+# Use simplejson or Python 2.6 json, prefer simplejson.
+try:
+    import simplejson as json
+except ImportError:
+    import json
 
 BASE_URL="http://www3.registraduria.gov.co/censo/_censoresultado.php?nCedula=%s"
 CEDULAS="cedulas.txt"
