@@ -86,5 +86,4 @@ def app(environ, start_response):
 
 if __name__=="__main__":
     from wsgiref.simple_server import make_server
-    import static
     make_server('localhost', 9999, app).serve_forever()
