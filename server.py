@@ -86,4 +86,5 @@ def app(environ, start_response):
 
 if __name__=="__main__":
     from wsgiref.simple_server import make_server
+    print "Prendiendo el servidor, abre tu navegador y ve a http://localhost:9999"
     make_server('localhost', 9999, app).serve_forever()
