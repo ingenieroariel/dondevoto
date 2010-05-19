@@ -148,3 +148,12 @@ body {
 .footer-link a:visited{
     color: black;
 }
+
+.ajax-loader {
+    font-family: sans-serif;
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
