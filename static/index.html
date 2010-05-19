@@ -1,122 +1,131 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="description" content="Servicio gratuito para saber donde votar para elecciones presidenciales en Colombia" />
-<meta name="keywords" content="votaciones, dónde votar, colombia, eleciones 2010, votar, presidencia, 2010" /> 
-<meta name="robots" content="all" />
-<meta name="language" content="es" />
-<meta name="distribution" content="Global" />
-<script src="http://cdn.jquerytools.org/1.2.1/jquery.tools.min.js"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $("#cedula").click(function(){
-      if (this.value == "Ingresa tu cédula")
-	this.value = "";
-    });    
-    $('.footer').hide();
-    // shows the footer DIV on clicking the link with an ID of "slick-show"
-  $('a#footer-show').click(function() {
-    $('.footer').slideToggle();
-    return false;
-  });
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="Servicio gratuito para saber donde votar para elecciones presidenciales en Colombia" />
+  <meta name="keywords" content="votaciones, dónde votar, colombia, eleciones 2010, votar, presidencia, 2010" />
+  <meta name="robots" content="all" />
+  <meta name="language" content="es" />
+  <meta name="distribution" content="Global" />
+  <script src="http://cdn.jquerytools.org/1.2.1/jquery.tools.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#cedula").click(function(){
 
-    $('form').submit(function() {
-      $("#result").hide();
-      $("#error").hide();
-      $("#errorMessage").html("");
-      cedula = parseInt($("#cedula").val().replace(/[\D\s]/g, ''));     
-      if (!(isNaN(cedula))){
-	url = "api/" + cedula + ".json";
-        $.getJSON(url, function(data) {
-	  if (data[cedula] != undefined){
-            sitio = data[cedula];
-            $('.direccion').html(""+sitio[3].toLowerCase()+"<br>"+sitio[2].toLowerCase());
-            $('.mesa').html(" Mesa #"+sitio[5]);
-            $('.ciudad').html(""+sitio[1].toLowerCase()+", "+sitio[0].toLowerCase());
-	    $("#result").show();
-          }else{
-            $("#result").hide();
-	    $("#errorMessage").html("No se han encontrado resultados para tu documento de identidad");
-	    $("#error").show();
-	  }
+        if (this.value == "Ingresa tu cédula")
+          this.value = "";
         });
-      }else{
-        $("#errorMessage").html("El documento de identidad que has ingresado no es valido");
-	$("#error").show();
-      }      
-      return false;
-    });    
-  });
-</script>
 
-<title>¿En dónde voto? - Servicio gratuito para saber donde votar en Colombia</title>
-<link rel="shortcut icon" href="img/icon.png" />
-<link href="css/style.css" media="screen" rel="stylesheet" type="text/css" />
+        $('.footer').hide();
+        // shows the footer DIV on clicking the link with an ID of "slick-show"
+        $('a#footer-show').click(function() {
+        $('.footer').slideToggle();
+
+        return false;
+
+      });
+
+      $('form').submit(function() {
+
+        $("#result").hide();
+        $("#error").hide();
+        $("#errorMessage").html("");
+        cedula = parseInt($("#cedula").val().replace(/[\D\s]/g, ''));
+
+        if (!(isNaN(cedula))){
+
+          url = "api/" + cedula + ".json";
+          $.getJSON(url, function(data) {
+
+            if (data[cedula] != undefined){
+              sitio = data[cedula];
+              $('.direccion').html("" + sitio[3].toLowerCase() + "<br>" + sitio[2].toLowerCase());
+              $('.mesa').html(" Mesa #" + sitio[5]);
+              $('.ciudad').html("" + sitio[1].toLowerCase() + ", " + sitio[0].toLowerCase());
+              $("#result").show();
+
+            } else{
+              $("#result").hide();
+              $("#errorMessage").html("No se han encontrado resultados para tu documento de identidad");
+              $("#error").show();
+            }
+
+          });
+
+        }else{
+          $("#errorMessage").html("El documento de identidad que has ingresado no es válido");
+          $("#error").show();
+        }
+
+        return false;
+      });
+    });
+  </script>
+  <title>¿En dónde voto? - Servicio gratuito para saber dónde votar en Colombia</title>
+  <link rel="shortcut icon" href="img/icon.png" />
+  <link href="css/style.css" media="screen" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<script type="text/javascript">
+  <script type="text/javascript">
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-16432144-1']);
-  _gaq.push(['_trackPageview']);
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-16432144-1']);
+    _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 
-</script>
-<div class="content">
- <img src="img/endondevoto.png" alt="en dónde voto - colombia" class="logo" />
- <div class="search">
-  <form action="">
-   <input type="text" class="campo" value="Ingresa tu cédula" id="cedula" />
-   <input type="submit" class="boton" value="Buscar" name="" />
-  </form>
- </div> 
+  <div class="content">
+    <img src="img/endondevoto.png" alt="en dónde voto - colombia" class="logo" />
+    <div class="search">
+      <form action="">
+        <input type="text" class="campo" value="Ingresa tu cédula" id="cedula" />
+        <input type="submit" class="boton" value="Buscar" name="" />
+      </form>
+    </div>
 
- <div class="result" id="error" style="display:none; padding:10px">
-  <h3 id="errorMessage"></h3>
- </div>
+    <div class="result" id="error" style="display:none; padding:10px">
+      <h3 id="errorMessage"></h3>
+    </div>
 
- <!-- resultado -->
- <div class="result" id="result" style="display:none">
-  <p>tengo que votar en</p>
-  <h3 class="direccion">Cra 54 No. 76-119,  Colegio Marinita Cesar</h3>
-  <p><span class="mesa"> Mesa #30 </span></p>
-  <p class="ciudad">Barranquilla - Atlántico   </p>
-  <p style="">
-<!-- AddThis Button BEGIN -->
-<div class="addthis_toolbox addthis_default_style">
-<a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bf0ad2b1ef73279" class="addthis_button_compact" style="float: left;">Que todo el mundo sepa donde votar: Comparte éste sitio!</a>
-<span class="addthis_separator">|</span>
-<a class="addthis_button_facebook"></a>
-<a class="addthis_button_myspace"></a>
-<a class="addthis_button_google"></a>
-<a class="addthis_button_twitter"></a>
-</div>
-<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bf0ad2b1ef73279"></script>
-<!-- AddThis Button END -->
+    <!-- resultado -->
+    <div class="result" id="result" style="display:none">
+      <p>Tengo que votar en</p>
+      <h3 class="direccion"></h3>
+      <p><span class="mesa"></span></p>
+      <p class="ciudad"></p>
+      <p style="">
+        <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style">
+          <a href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bf0ad2b1ef73279" class="addthis_button_compact" style="float: left;">Que todo el mundo sepa donde votar: Comparte éste sitio!</a>
+          <span class="addthis_separator">|</span>
+          <a class="addthis_button_facebook"></a>
+          <a class="addthis_button_myspace"></a>
+          <a class="addthis_button_google"></a>
+          <a class="addthis_button_twitter"></a>
+        </div>
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bf0ad2b1ef73279"></script>
+        <!-- AddThis Button END -->
+      </p>
+    </div>
+    <!-- fin resultado -->
 
-<!--
-<img src="img/facebook.png" alt="" />
-<img src="img/twitter.png" alt="" />
-<img src="img/google-buzz.png" alt="" />
--->
-</p>
+    <div class="footer-link">
+      <p><a href="" id="footer-show">Quién hizo este sitio y por qué?</a></p>
+    </div>
   </div>
-<!-- fin resultado -->
 
-<div class="footer-link"><p><a href="" id="footer-show">Quien hizo este sitio y por qué?</a></p></div></div> 
-<div class="footer">
-<p>Este proyecto fue creado por <a href="http://twitter.com/ingenieroariel" title="Ariel Núñez" target="_blank">@ingenieroariel(Ariel Núñez)</a> con la ayuda de <a href="http://twitter.com/cachafla" title="Andrés Rodríguez" target="_blank">@cachafla(Andrés Rodríguez)</a> y <a href="http://twitter.com/trixel" title="Juan Guillermo Sánchez" target="_blank">@trixel(Juan Guillermo Sánchez)</a>. La primera vez que buscas tu sitio de votación tomamos la información directamente del sitio de la registraduría y la almacenamos en nuestro servidor, de manera que si el servicio oficial se cae como a veces pasa, puedas acceder a la información sobre tu sitio de votación.</p>
-<p>El código de esta página es abierto / libre, si tienes inclinaciones técnicas mira todo el detalle en  <a href="http://github.com/ingenieroariel/dondevoto" target="_blank" title="donde voto en github">github</a></p>
-<p>Cargamos todo en la RAM de nuestro servidor en la nube de Amazon para ser <a href="http://github.com/ingenieroariel/dondevoto/blob/master/BENCHMARKS.rst" target="_blank">100 veces más eficientes</a> que el script de PHP + Base de Datos de la  registraduría. Te puedes dar cuenta ya que la primera bús queda de tu sitio de votación tarda aproximadamente 4 segundos y las siguientes veces mucho menos de un segundo.</p>
-<p>Señores de la registraduría, estamos a la orden si quieren implementar esta solución en su servidor, a nosotros nos tomó sólo dos días y <a href="http://github.com/ingenieroariel/dondevoto/blob/master/LICENSE" target="_blank">el código es gratuito y libre</a>.</p>
-<p>Términos de uso: No nos eches la culpa si tu computador explota o votas por la persona que no és. Tampoco nos demandes que estamos tratando es de hacer nuestra pequeña contribución a la democracia de nuestro país.</p>
-</div> 
+  <div class="footer">
+    <p>Este proyecto fue creado por <a href="http://twitter.com/ingenieroariel" title="Ariel Núñez" target="_blank">@ingenieroariel(Ariel Núñez)</a> con la ayuda de <a href="http://twitter.com/cachafla" title="Andrés Rodríguez" target="_blank">@cachafla(Andrés Rodríguez)</a> y <a href="http://twitter.com/trixel" title="Juan Guillermo Sánchez" target="_blank">@trixel(Juan Guillermo Sánchez)</a>. La primera vez que buscas tu sitio de votación tomamos la información directamente del sitio de la registraduría y la almacenamos en nuestro servidor, de manera que si el servicio oficial se cae como a veces pasa, puedas acceder a la información sobre tu sitio de votación.</p>
+    <p>El código de esta página es abierto / libre, si tienes inclinaciones técnicas mira todo el detalle en  <a href="http://github.com/ingenieroariel/dondevoto" target="_blank" title="donde voto en github">github</a></p>
+    <p>Cargamos todo en la RAM de nuestro servidor en la nube de Amazon para ser <a href="http://github.com/ingenieroariel/dondevoto/blob/master/BENCHMARKS.rst" target="_blank">100 veces más eficientes</a> que el script de PHP + Base de Datos de la  registraduría. Te puedes dar cuenta ya que la primera bús queda de tu sitio de votación tarda aproximadamente 4 segundos y las siguientes veces mucho menos de un segundo.</p>
+    <p>Señores de la registraduría, estamos a la orden si quieren implementar esta solución en su servidor, a nosotros nos tomó sólo dos días y <a href="http://github.com/ingenieroariel/dondevoto/blob/master/LICENSE" target="_blank">el código es gratuito y libre</a>.</p>
+    <p>Términos de uso: No nos eches la culpa si tu computador explota o votas por la persona que no és. Tampoco nos demandes que estamos tratando es de hacer nuestra pequeña contribución a la democracia de nuestro país.</p>
+  </div>
 
 </body>
 </html>
