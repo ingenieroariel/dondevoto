@@ -133,11 +133,16 @@ body {
 }
 
 .footer-link{
+    font-family: sans-serif;
     padding-top: 20px;
     color: black;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+.footer-link a {
+    text-decoration: none;
 }
 
 .footer-link a:visited{
