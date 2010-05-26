@@ -8,7 +8,7 @@
   <meta name="language" content="es" />
   <meta name="distribution" content="Global" />
   <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
-  <script src="http://cdn.jquerytools.org/1.2.1/jquery.tools.min.js"></script>
+  <script src="http://cdn.jquerytools.org/1.2.1/jquery.tools.min.js" type="text/javascript"></script>
   <script type="text/javascript">
     $(document).ready(function(){
       $("#cedula").click(function(){
@@ -42,7 +42,7 @@
 
             if (data[cedula] != undefined){
               sitio = data[cedula];
-              $('.direccion').html("" + sitio[3].toLowerCase() + "<br>" + sitio[2].toLowerCase());
+              $('.direccion').html("" + sitio[3].toLowerCase() +", " + sitio[2].toLowerCase());
               $('.mesa').html(" Mesa #" + sitio[5]);
               $('.ciudad').html("" + sitio[1].toLowerCase() + ", " + sitio[0].toLowerCase());
               $("#result").show();
@@ -93,7 +93,7 @@
     </div>
 
     <div class="ajax-loader" style="display:none;">
-      <img src="img/ajax-loader.gif" /><br />
+      <img src="img/ajax-loader.gif" alt="loading"/><br />
       <p>Cargando resultados...</p>
     </div>
 
